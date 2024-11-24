@@ -12,21 +12,21 @@ import { DUMMY_USERS } from '../dummy-users';
 })
 export class UserComponent {
   // Input decorator
-  // @Input({ required: true }) avatar!: string;
-  // @Input({ required: true }) name!: string;
+  @Input({ required: true }) avatar!: string;
+  @Input({ required: true }) name!: string;
 
   // alternate to decorator approach
-  avatar = input.required<string>();
-  name = input.required<string>();
+  // avatar = input.required<string>();
+  // name = input.required<string>();
 
   // only updates when avatar changes
-  imagePath = computed(() => {
-    'assets/users/' + this.avatar();
-  });
+  // imagePath = computed(() => {
+  //   'assets/users/' + this.avatar();
+  // });
 
-  // get imagePath() {
-  //   return 'assets/users/' + this.avatar;
-  // }
+  get imagePath() {
+    return 'assets/users/' + this.avatar;
+  }
 
   onSelectUser (){}
 }
