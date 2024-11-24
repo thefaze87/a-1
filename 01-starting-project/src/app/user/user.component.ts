@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, computed, Input, input } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 
@@ -12,12 +12,21 @@ import { DUMMY_USERS } from '../dummy-users';
 })
 export class UserComponent {
   // Input decorator
-  @Input({ required: true }) avatar!: string;
-  @Input({ required: true }) name!: string;
+  // @Input({ required: true }) avatar!: string;
+  // @Input({ required: true }) name!: string;
 
-  get imagePath() {
-    return 'assets/users/' + this.avatar;
-  }
+  // alternate to decorator approach
+  avatar = input.required<string>();
+  name = input.required<string>();
+
+  // only updates when avatar changes
+  imagePath = computed(() => {
+    'assets/users/' + this.avatar();
+  });
+
+  // get imagePath() {
+  //   return 'assets/users/' + this.avatar;
+  // }
 
   onSelectUser (){}
 }
