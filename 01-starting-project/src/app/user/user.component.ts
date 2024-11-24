@@ -1,4 +1,4 @@
-import { Component, computed, Input, input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 
 
@@ -12,8 +12,10 @@ import { DUMMY_USERS } from '../dummy-users';
 })
 export class UserComponent {
   // Input decorator
+  @Input({ required: true }) id!: string;
   @Input({ required: true }) avatar!: string;
   @Input({ required: true }) name!: string;
+  @Output() select = new EventEmitter();
 
   // alternate to decorator approach
   // avatar = input.required<string>();
@@ -28,5 +30,7 @@ export class UserComponent {
     return 'assets/users/' + this.avatar;
   }
 
-  onSelectUser (){}
+  onSelectUser (){
+    this.select.emit(this.id);
+  }
 }
