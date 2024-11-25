@@ -1,10 +1,6 @@
 import { Component, Input, Output, EventEmitter, output } from '@angular/core';
-import { DUMMY_USERS } from '../dummy-users';
-
+import { type User } from './user.model';
 // type User = { id: string; avatar: string; name: string };
-
-// More commmon approach in Angular but both this and type are both acceptable and valid
-interface User { id: string; avatar: string; name: string; }
 
 // Component decorator
 @Component({
